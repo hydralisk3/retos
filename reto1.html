@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	let base;
+	let exponente;
+	let mod;
+	const input = [];
+
+
+	$("button").click(function(){
+		$("contenedor").empty();
+		$("#calcularbtn").after('<div id="contenedor"></div>');
+		base=$("#basei").val();
+		mod=$("#modi").val();
+		mod2=(mod-1);
+		
+		for (let i = 0; i <= mod2 ; i++) {
+			$("#contenedor").append('<tr><td>'+base+'</td><td>&nbsp;elevado a la&nbsp;</td><td>'+i+'</td><td>&nbsp;es&nbsp;</td><td>&nbsp;'+Math.pow(base, i)+'&nbsp;</td><td>&nbsp;mod&nbsp;</td><td>&nbsp;'+mod+'&nbsp;</td><td>&nbsp;es igual a&nbsp;</td><td>&nbsp;'+((Math.pow(base, i)) % mod)+'&nbsp;</td><br>');
+			input[i]= ((Math.pow(base, i)) % mod);
+		}
+
+
+		
+		  sortedArr = [],
+		  count = 1;
+		sortedArr = input.sort(function(a, b) {
+		  return a - b
+		});
+		for (var i = 0; i < sortedArr.length; i = i + count) {
+		  count = 1;
+		  for (var j = i + 1; j < sortedArr.length; j++) {
+			if (sortedArr[i] === sortedArr[j])
+			  count++;
+		  }
+		  if(count<=1){
+			$("#contenedor").append(sortedArr[i] + "<br>");
+		  }
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+</head>
+<body>
+
+<p>Base: <input type="text" id="basei"></p>
+<p>Mod: <input type="text" id="modi"></p>
+
+<button id="calcularbtn">Calcular</button>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
